@@ -1,0 +1,68 @@
+php artisan make:model Task
+php artisan make:migrate create_tasks_table;
+php artisan make:migration add_mark_to_tasks_table;
+php artisan migrate
+php artisan migrate:fresh
+php artisan migrate:rollback
+php artisan tinker
+
+php artisan make:controller TaskController
+php artisan make:model Task
+php artisan migrate
+php artisan tinker
+php artisan make:factory TaskFactory
+
+# Tinker
+Task::wehre('id', 2);
+Task::first();
+Task::find(2);
+Task::findOrFail(3)
+Task::all();
+Task::latest()->get();
+Task::latest()->first();
+Task::latest()->first('list');
+Task::latest()->get('id');
+Task::latest()->get(['id', 'list']);
+Task::pluck('list');
+Task::pluck('list')->first();
+Task::pluck('list')->latest();
+
+$task = App\Models\Task::first();
+$task->lisl = 'Task sudah di edit';
+$task->save();
+
+Task::where('mark', 1)->get()->pluck('list');
+Task::whereMark(1)->get()->pluck('list');
+Task::wehreMark(false)->get()->pluck('list');
+
+App\Models\Task::factory()->create();
+App\Models\Task::factory()->create(5);
+App\Models\Task::factory()->count(3)->create();
+
+// pertemuan 23
+php artisan make:seeder TaskSeeder
+php artisan db:seed
+php artisan migrate:fresh --seed
+
+// pertemua 24
+php artisan make:controller HomeController -i; create fn invokable
+php artisan make:controller PostController -r
+php artisan make:controller PostController -m Post;
+php artisan make:model Post -mfsc; // migration, factory, seeder, controller
+php artisan make:model --all
+
+// pertemuan 25 Mass Assignment
+protected $guarded = [] // untuk web sendiri
+protected $fillable = [] // unutk web froum contohnya
+
+
+// 27 laravel mix
+npm install -g yarn
+yarn
+yarn dev
+yarn add bootsrap
+yarn watch
+yarn add sass-loader sass resolve-url-loader --dev
+yarn add @popperjs/core && yarn watch
+yarn prod
+# jangan lupa buat folder sass di resources
